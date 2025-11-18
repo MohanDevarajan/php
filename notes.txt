@@ -13,6 +13,14 @@ git clone https://github.com/edureka-devops/projCert.git
  git branch -m master main
  git branch
  git push -u origin main
+
+ cd /Users/mohandevarajan/Desktop/MOHAN/STUDY/Edurekha/project-1/php
  vi Dockerfile
+
+ FROM php:8-apache
+ RUN a2enmod rewrite
+ COPY website/ /var/www/html/
+ EXPOSE 80
+
  docker build -t php:v1 .
  docker images
