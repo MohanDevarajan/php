@@ -1,0 +1,18 @@
+# created a new repo php from 
+git clone https://github.com/edureka-devops/projCert.git
+
+# copied all the contents to php folder
+# removed the .git folder 
+# created with new repo
+
+ git init
+ git status
+ git add .
+ git remote add origin https://github.com/MohanDevarajan/php.git
+ git commit -m "Initial commit for the php"
+ git branch -m master main
+ git branch
+ git push -u origin main
+ vi Dockerfile
+ docker build -t php:v1 .
+ docker images
