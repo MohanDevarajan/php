@@ -24,3 +24,7 @@ git clone https://github.com/edureka-devops/projCert.git
 
  docker build -t php:v1 .
  docker images
+ docker run -p 5050:80 php:v1
+
+# view the webpage 
+ http://localhost:5050/
