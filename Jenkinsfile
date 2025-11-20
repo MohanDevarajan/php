@@ -1,16 +1,27 @@
 pipeline {
     agent any
 
+    triggers {
+        githubPush() // Triggered by GitHub webhook on push
+    }
+
     stages {
-        stage('Build') {
+        stage('Run Only on Main') {
+            when {
+                branch 'main'
+            }
             steps {
-                echo "Building branch: ${env.BRANCH_NAME}"
+                echo "This commit was pushed to the main branch. Running pipeline..."
             }
         }
 
-        stage('Test') {
+        stage('Build') {
+            when {
+                branch 'main'
+            }
             steps {
-                echo "Running tests on branch: ${env.BRANCH_NAME}"
+                echo "Building main branch..."
+                // Add your build steps here
             }
         }
 
@@ -20,16 +31,17 @@ pipeline {
             }
             steps {
                 echo "Deploying from main branch..."
+                // Add your deploy steps here
             }
         }
     }
 
     post {
         success {
-            echo "Pipeline completed successfully for ${env.BRANCH_NAME}"
+            echo "Pipeline completed successfully on main"
         }
         failure {
-            echo "Pipeline failed for ${env.BRANCH_NAME}"
+            echo "Pipeline failed on main"
         }
     }
 }
